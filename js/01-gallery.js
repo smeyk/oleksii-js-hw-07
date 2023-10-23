@@ -18,14 +18,16 @@ const instance = basicLightbox.create(`<img src="" />`);
 const showImage = (event) => {
 	event.preventDefault();
 	const datasetImgSrc = event.target.dataset.source;
+	if (event.target.className !== "gallery__image") {
+		return;
+	}
 	instance.element().querySelector('img').src = datasetImgSrc;
 	instance.show();
 }
 
 const closeImg = (event) => {
-	if (event.key === "Escape" && !instance.close()) {
+	if (event.code === "Escape" && !instance.close()) {
 		instance.close();
-		console.log("show");
 	}
 }
 
